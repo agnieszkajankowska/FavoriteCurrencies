@@ -1,3 +1,4 @@
+import { uniqBy } from 'lodash'
 import {
     FETCH_USER_FAVORITE__BEGIN,
     FETCH_USER_FAVORITE__SUCCESS,
@@ -17,7 +18,7 @@ export default (state=initialState, action) => {
         case FETCH_USER_FAVORITE__SUCCESS:
             return {
                 ...state,
-                favoriteCurrencies: state.favoriteCurrencies.concat(action.exchangeRate)
+                favoriteCurrencies: uniqBy(state.favoriteCurrencies.concat(action.exchangeRate), 'code')
             }
         case DELETE_USER_FAVORITE:
             return {
