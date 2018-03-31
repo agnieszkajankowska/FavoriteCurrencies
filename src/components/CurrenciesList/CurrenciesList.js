@@ -21,8 +21,18 @@ class CurrenciesList extends Component {
 
         this.handleSubmit = (event) => {
             event.preventDefault();
-            this.props.fetchUserFavorite(this.state.currencySymbol);
+            this.state.currencySymbols.forEach(currencySymbol => {
+                    this.props.fetchUserFavorite(currencySymbol)
+                }
+            )
+        }
 
+        this.handleChange = () => {
+            let element = document.querySelector('#currenciesList');
+            let selectedValues = [...element.options].filter(option => option.selected).map(option => option.value);
+            this.setState({
+                currencySymbols: selectedValues
+            })
         }
     }
     render() {
@@ -33,11 +43,7 @@ class CurrenciesList extends Component {
                 <form onSubmit={this.handleSubmit}>
                 <FormGroup controlId="currenciesList">
                     <ControlLabel>Currencies list:</ControlLabel>
-                    <FormControl componentClass="select" multiple onChange={event =>
-                        this.setState({
-                        currencySymbol: event.target.value
-                    })
-                    }>
+                    <FormControl componentClass="select" multiple onChange={this.handleChange}>
                         {currencies.map(
                             currency =>   <option value={currency} key={currency}>{currency}</option>
                         )}
@@ -51,3 +57,8 @@ class CurrenciesList extends Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrenciesList);
+
+/*event =>
+                        this.setState({
+                        currencySymbol: event.target.value
+                    })*/
