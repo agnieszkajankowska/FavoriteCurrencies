@@ -1,0 +1,5 @@
+export const FETCH_USER_FAVORITE__BEGIN = 'favorites-list/FETCH_USER_FAVORITE__BEGIN';
+export const FETCH_USER_FAVORITE__SUCCESS = 'favorites-list/FETCH_USER_FAVORITE__SUCCESS';
+export const FETCH_USER_FAVORITE__FAILURE = 'favorites-list/FETCH_USER_FAVORITE__FAILURE';
+export const DELETE_USER_FAVORITE = 'favorites-list/DELETE_USER_FAVORITE';
+export const DELETE_USER_FAVORITES = 'favorites-list/DELETE_USER_FAVORITES';
