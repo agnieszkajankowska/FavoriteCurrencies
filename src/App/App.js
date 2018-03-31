@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
 import {Grid, Row, Col} from 'react-bootstrap';
-import CurrenciesList from '../CurrenciesList/CurrenciesList'
+import CurrenciesList from '../CurrenciesList/CurrenciesList';
+import FavoritesList from '../FavoritesList/FavoritesList';
+
 
 class App extends Component {
     render() {
@@ -13,7 +15,7 @@ class App extends Component {
                             <CurrenciesList/>
                         </Col>
                         <Col xs={12} md={6}>
-                            Favorites list
+                            <FavoritesList/>
                         </Col>
                     </Row>
                 </Grid>
