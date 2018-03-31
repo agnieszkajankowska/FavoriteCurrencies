@@ -3,7 +3,9 @@ import {
     FETCH_USER_FAVORITE__BEGIN,
     FETCH_USER_FAVORITE__SUCCESS,
     FETCH_USER_FAVORITE__FAILURE,
-    DELETE_USER_FAVORITE
+    DELETE_USER_FAVORITE,
+    DELETE_USER_FAVORITES
+
 }
     from './actionTypes'
 
@@ -24,6 +26,11 @@ export default (state=initialState, action) => {
             return {
                 ...state,
                 favoriteCurrencies: state.favoriteCurrencies.filter(currency => currency.code !== action.currencySymbol)
+            }
+        case DELETE_USER_FAVORITES:
+            return {
+                ...state,
+                favoriteCurrencies: []
             }
         default : return state
     }
