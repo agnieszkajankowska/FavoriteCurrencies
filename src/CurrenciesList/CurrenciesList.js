@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import {FormGroup, ControlLabel, FormControl} from 'react-bootstrap';
+import {FormGroup, ControlLabel, FormControl, Button} from 'react-bootstrap';
 
 class CurrenciesList extends Component {
     render() {
         const currencies = ["USD", "AUD", "CAD", "EUR", "HUF", "CHF", "GBP", "JPY", "CZK", "DKK", "NOK", "SEK", "XDR"];
         return (
             <div>
+                <form>
                 <FormGroup controlId="currenciesList">
                     <ControlLabel>Currencies list:</ControlLabel>
                     <FormControl componentClass="select" multiple>
@@ -14,6 +15,8 @@ class CurrenciesList extends Component {
                         )}
                     </FormControl>
                 </FormGroup>
+                <Button type="submit">Add to favorites</Button>
+                </form>
             </div>
         )
     }
