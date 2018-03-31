@@ -7,6 +7,7 @@ const mapStateToProps = state =>({
     chosenCurrencies: state.favoritesData.favoriteCurrencies
 });
 
+
 class FavoritesList extends Component {
 
     render() {
@@ -15,11 +16,10 @@ class FavoritesList extends Component {
                 <span>Favorites List:</span>
                 <Button>Delete All</Button>
                 <PanelGroup
-                    accordion
                     id="favoritesList"
                 >
                     {this.props.chosenCurrencies.map( (currency, index) =>
-                        <FavoriteItem currency={currency} order={index} />
+                        <FavoriteItem currency={currency} order={index} key={index} />
                     )}
                 </PanelGroup>
             </div>
