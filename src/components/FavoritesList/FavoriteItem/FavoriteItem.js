@@ -4,11 +4,11 @@ import {Panel, Button} from 'react-bootstrap';
 class FavoriteItem extends Component {
     render() {
         return (
-            <Panel eventKey="1">
+            <Panel eventKey={this.props.order}>
                 <Panel.Heading>
-                    <Panel.Title toggle>USD <Button>Delete</Button></Panel.Title>
+                    <Panel.Title toggle>{this.props.currency.code}<Button>Delete</Button></Panel.Title>
                 </Panel.Heading>
-                <Panel.Body collapsible>Buy: 3,40 Sell: 3,43</Panel.Body>
+                <Panel.Body collapsible>Buy: {this.props.currency.rates[0].ask} Sell: {this.props.currency.rates[0].bid}</Panel.Body>
             </Panel>
         )
     }
