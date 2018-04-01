@@ -12,7 +12,8 @@ import {
 
 const initialState = {
     favoriteCurrencies: [],
-    pending: false
+    pending: false,
+    failure: false
 }
 
 
@@ -32,7 +33,8 @@ export default (state=initialState, action) => {
         case FETCH_USER_FAVORITE__FAILURE:
             return {
                 ...state,
-                pending: action.pending
+                pending: action.pending,
+                failure: action.failure
             }
         case DELETE_USER_FAVORITE:
             return {

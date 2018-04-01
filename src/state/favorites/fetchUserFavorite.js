@@ -35,7 +35,8 @@ export const fetchUserFavorite = (currencySymbol) => {
             response =>
                 dispatch({
                     type: FETCH_USER_FAVORITE__FAILURE,
-                    pending: false
+                    pending: false,
+                    failure: true
                 })
         )
     }
