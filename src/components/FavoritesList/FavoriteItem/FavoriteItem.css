@@ -1,0 +1,27 @@
+.favorite-item .btn-link {
+    color: #fff;
+    padding: 0;
+}
+
+.favorite-item .btn-link:hover {
+    text-decoration: none;
+    color: darkturquoise;
+}
+
+.favorite-item .panel-title {
+    display: inline-block;
+}
+
+.favorite-item .btn-link {
+    display: inline;
+    float: right;
+}
+
+.favorite-item .panel-body {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.favorite-item .buy-rate {
+    padding-right: 20px;
+}

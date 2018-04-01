@@ -4,3 +4,28 @@
     height: 64px;
     width: 64px;
 }
+
+.favorites-list-title {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.delete-all-btn {
+    display: inline;
+    float: right;
+}
+
+.favorites-list-container {
+    padding-top: 30px;
+}
+
+.favorites-list-container .panel-title {
+    font-size: 20px;
+}
+
+@media (min-width: 992px) {
+    .favorites-list-container {
+        padding-top: 0;
+    }
+}

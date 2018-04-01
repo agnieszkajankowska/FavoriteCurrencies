@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PanelGroup, Button } from 'react-bootstrap';
+import { PanelGroup, Button, Alert } from 'react-bootstrap';
 import FavoriteItem from './FavoriteItem/FavoriteItem';
 import {connect} from 'react-redux';
 import {deleteUserFavorites } from '../../state/favorites/removeFromFavorites';
@@ -25,9 +25,13 @@ constructor() {
 }
     render() {
         return (
-            <div>
-                <span>Favorites List:</span>
-                <Button onClick={this.handleDeleteAll}>Delete All</Button>
+            <div className="favorites-list-container">
+                <h4 className="favorites-list-title">Favorites List:</h4>
+                {this.props.chosenCurrencies.length > 0 ?
+                    <Button onClick={this.handleDeleteAll} bsStyle="danger" className="delete-all-btn">Delete All</Button> :
+                    <Alert bsStyle="info">
+                        <strong>Hey there!</strong> Here, you will see currencies exchange rate, after adding to favorites.
+                    </Alert>}
                 <PanelGroup
                     id="favoritesList"
                 >
