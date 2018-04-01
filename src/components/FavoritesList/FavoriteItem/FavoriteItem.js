@@ -3,6 +3,7 @@ import {Panel, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {deleteUserFavoriteItem} from "../../../state/favorites/removeFromFavorites";
 
+
 const mapDispatchToProps = dispatch => ({
     deleteUserFavoriteItem: (currencySymbol) => dispatch(deleteUserFavoriteItem(currencySymbol))
 })

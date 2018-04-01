@@ -1,0 +1,6 @@
+.loader {
+    margin: 20px auto;
+    background: url('../../assets/loader.gif');
+    height: 64px;
+    width: 64px;
+}

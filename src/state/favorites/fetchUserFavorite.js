@@ -8,7 +8,8 @@ import {
 export const fetchUserFavorite = (currencySymbol) => {
     return (dispatch) => {
         dispatch({
-            type: FETCH_USER_FAVORITE__BEGIN
+            type: FETCH_USER_FAVORITE__BEGIN,
+            pending: true
         })
         const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         const targetUrl = 'http://api.nbp.pl/api/exchangerates/rates/C/';
@@ -24,11 +25,18 @@ export const fetchUserFavorite = (currencySymbol) => {
                     exchangeRate => {
                         dispatch({
                             type: FETCH_USER_FAVORITE__SUCCESS,
-                            exchangeRate: exchangeRate
+                            exchangeRate: exchangeRate,
+                            pending: false
                         })
                     }
                 )
             }
+        ).catch(
+            response =>
+                dispatch({
+                    type: FETCH_USER_FAVORITE__FAILURE,
+                    pending: false
+                })
         )
     }
 }

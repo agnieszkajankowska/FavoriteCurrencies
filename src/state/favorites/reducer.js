@@ -11,16 +11,28 @@ import {
 
 
 const initialState = {
-    favoriteCurrencies: []
+    favoriteCurrencies: [],
+    pending: false
 }
 
 
 export default (state=initialState, action) => {
     switch (action.type) {
+        case FETCH_USER_FAVORITE__BEGIN:
+            return {
+                ...state,
+                pending: action.pending
+            }
         case FETCH_USER_FAVORITE__SUCCESS:
             return {
                 ...state,
-                favoriteCurrencies: uniqBy(state.favoriteCurrencies.concat(action.exchangeRate), 'code')
+                favoriteCurrencies: uniqBy(state.favoriteCurrencies.concat(action.exchangeRate), 'code'),
+                pending: action.pending
+            }
+        case FETCH_USER_FAVORITE__FAILURE:
+            return {
+                ...state,
+                pending: action.pending
             }
         case DELETE_USER_FAVORITE:
             return {

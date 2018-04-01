@@ -3,9 +3,11 @@ import { PanelGroup, Button } from 'react-bootstrap';
 import FavoriteItem from './FavoriteItem/FavoriteItem';
 import {connect} from 'react-redux';
 import {deleteUserFavorites } from '../../state/favorites/removeFromFavorites';
+import './FavoritesList.css'
 
 const mapStateToProps = state =>({
-    chosenCurrencies: state.favoritesData.favoriteCurrencies
+    chosenCurrencies: state.favoritesData.favoriteCurrencies,
+    pending: state.favoritesData.pending
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -29,8 +31,9 @@ constructor() {
                 <PanelGroup
                     id="favoritesList"
                 >
-                    {this.props.chosenCurrencies.map( (currency, index) =>
-                        <FavoriteItem currency={currency} order={index} key={index} />
+                    { this.props.pending ? <div className="loader"></div> :
+                        this.props.chosenCurrencies.map( (currency, index) =>
+                            <FavoriteItem currency={currency} order={index} key={index} />
                     )}
                 </PanelGroup>
             </div>
