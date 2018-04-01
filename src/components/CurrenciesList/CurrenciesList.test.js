@@ -17,7 +17,6 @@ it('shows message when there are no currencies available to follow', () => {
     expect(currenciesList.text()).not.toContain('There are no currencies available to follow.')
 });
 
-
 describe('list of currencies', () => {
     const currencies = ['USD', 'EUR', 'CAD'];
     const currenciesList = mount(<CurrenciesList currencies={currencies} />);
