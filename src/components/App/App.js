@@ -4,7 +4,7 @@ import {Grid, Row, Col, Jumbotron} from 'react-bootstrap';
 import CurrenciesList from '../CurrenciesList/CurrenciesList';
 import FavoritesList from '../FavoritesList/FavoritesList';
 
-
+const currencies = ["USD", "AUD", "CAD", "EUR", "HUF", "CHF", "GBP", "JPY", "CZK", "DKK", "NOK", "SEK", "XDR"];
 class App extends Component {
     render() {
         return (
@@ -24,7 +24,7 @@ class App extends Component {
                 <Grid>
                     <Row>
                         <Col xs={12} md={6}>
-                            <CurrenciesList/>
+                            <CurrenciesList currencies={currencies}/>
                         </Col>
                         <Col xs={12} md={6}>
                             <FavoritesList/>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {FormGroup, ControlLabel, FormControl, Button} from 'react-bootstrap';
+import {FormGroup, ControlLabel, FormControl, Button, Alert} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {fetchUserFavorite} from "../../state/favorites/fetchUserFavorite";
 import './CurrenciesList.css'
@@ -12,13 +12,12 @@ const mapDispatchToProps = dispatch => ({
     fetchUserFavorite: (currencySymbol) => dispatch(fetchUserFavorite(currencySymbol))
 })
 
-const currencies = ["USD", "AUD", "CAD", "EUR", "HUF", "CHF", "GBP", "JPY", "CZK", "DKK", "NOK", "SEK", "XDR"];
-class CurrenciesList extends Component {
-    constructor() {
-        super()
+export class CurrenciesList extends Component {
+    constructor(props) {
+        super(props)
 
         this.state = {
-            currencySymbols: [currencies[0]]
+            currencySymbols: [props.currencies[0]]
         }
 
         this.handleSubmit = (event) => {
@@ -40,18 +39,25 @@ class CurrenciesList extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                <FormGroup controlId="currenciesList">
-                    <ControlLabel className="currency-list-title">Currencies list:</ControlLabel>
-                    <FormControl componentClass="select" size={13} multiple defaultValue={[currencies[0]]} onChange={this.handleChange}
-                                 className="currency-list">
-                        {currencies.map(
-                            currency =>   <option value={currency} key={currency}>{currency}</option>
-                        )}
-                    </FormControl>
-                </FormGroup>
-                <Button type="submit" bsStyle="primary" bsSize="large">Add to favorites</Button>
-                </form>
+                {
+                    this.props.currencies.length < 1 ?
+                    <Alert bsStyle="danger">
+                        There are no currencies available to follow.
+                    </Alert> :
+                    <form onSubmit={this.handleSubmit}>
+                        <FormGroup controlId="currenciesList">
+                            <ControlLabel className="currency-list-title">Currencies list:</ControlLabel>
+                            <FormControl componentClass="select" size={13} multiple defaultValue={[this.props.currencies[0]]}
+                                         onChange={this.handleChange}
+                                         className="currency-list">
+                                {this.props.currencies.map(
+                                    currency => <option value={currency} key={currency}>{currency}</option>
+                                )}
+                            </FormControl>
+                        </FormGroup>
+                        <Button type="submit" bsStyle="primary" bsSize="large">Add to favorites</Button>
+                    </form>
+                }
             </div>
         )
     }
