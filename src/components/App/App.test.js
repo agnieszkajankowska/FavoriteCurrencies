@@ -1,9 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import App from './App';
+import CurrenciesList from '../CurrenciesList/CurrenciesList';
+import FavoritesList from '../FavoritesList/FavoritesList';
 
 it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+    shallow(<App />);
+});
+
+it('includes CurrenciesList', () => {
+    const app = shallow(<App />);
+    expect(app.containsMatchingElement(<CurrenciesList />)).toEqual(true)
+});
+
+it('includes FavoritesList', () => {
+    const app = shallow(<App />);
+    expect(app.containsMatchingElement(<FavoritesList />)).toEqual(true)
 });
